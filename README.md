@@ -9,3 +9,36 @@ This training has the goal to explain DDD with a business case, showing the crea
 People who have been working with software development for some time, and who understand the basic concepts of an application/system/software. It is important to know about OOP (Object-Oriented Programming), too.
 
 __Level:__ Intermediate
+
+## Content to be Explored:
+
+#### Architecture/Structure
+
+* API (Application Programming Interface)
+* Monolithic structure
+* Onion Architecture
+
+
+#### Principles
+
+* Domain Driven-Design
+	* Strategic
+		* Ubiquitous Language
+		* Context Map
+		* Bounded Context
+	* Tactical
+
+#### Patterns
+
+* CQRS (Command and Query Responsibility Segregation)
+* Repository Pattern
+* Notification Pattern
+
+#### Technologies
+
+* .NET 8
+* MediatR
+* Dapper
+* Entity Framework
+* Automapper
+* FluentValidation
