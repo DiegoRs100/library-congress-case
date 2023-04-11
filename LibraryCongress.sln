@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Api", "src\Library.Api\Library.Api.csproj", "{8853DB32-BDA2-4729-A56F-0725EDD3805A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.CrossCutting", "src\Library.CrossCutting\Library.CrossCutting.csproj", "{0EEC17B8-AE98-4119-8FAF-D8A90C8B9FF1}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shelf", "Shelf", "{FBF66AD1-2E29-47C2-8EA9-0EB038C3527B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{19CB29B3-982C-4C44-932C-CDA9546406C0}"
@@ -13,27 +15,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rent", "Rent", "{E3382618-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Account", "Account", "{39FE14FF-44AB-4F2D-8624-9C6A0254E42E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Domain", "src\Library.Shelf.Domain\Library.Shelf.Domain.csproj", "{F358C6B4-8A69-41BE-AB7A-310F6DB45BFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Application", "src\Account\Library.Account.Application\Library.Account.Application.csproj", "{E7E938C6-7450-471C-94BE-A7F0E1A69C1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Application", "src\Library.Account.Application\Library.Account.Application.csproj", "{E7E938C6-7450-471C-94BE-A7F0E1A69C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Domain", "src\Account\Library.Account.Domain\Library.Account.Domain.csproj", "{BA5A978F-52A8-47C1-AC60-CD3550863DC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Domain", "src\Library.Account.Domain\Library.Account.Domain.csproj", "{BA5A978F-52A8-47C1-AC60-CD3550863DC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Infra", "src\Account\Library.Account.Infra\Library.Account.Infra.csproj", "{F94CB81C-4848-484F-8439-506A2F2BAAFF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.CrossCutting", "src\Library.CrossCutting\Library.CrossCutting.csproj", "{0EEC17B8-AE98-4119-8FAF-D8A90C8B9FF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Notification.Core", "src\Notification\Library.Notification.Core\Library.Notification.Core.csproj", "{E1BD3E7E-93D3-4C93-BDF8-656B05DFC6F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Account.Infra", "src\Library.Account.Infra\Library.Account.Infra.csproj", "{F94CB81C-4848-484F-8439-506A2F2BAAFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Application", "src\Shelf\Library.Shelf.Application\Library.Shelf.Application.csproj", "{95E8E586-B110-4DA8-8ADC-F10A861F6251}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Notification.Core", "src\Library.Notification.Core\Library.Notification.Core.csproj", "{E1BD3E7E-93D3-4C93-BDF8-656B05DFC6F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Infra", "src\Shelf\Library.Shelf.Infra\Library.Shelf.Infra.csproj", "{294896A1-86E9-45B6-A470-1773E5F4A90F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Application", "src\Library.Rent.Application\Library.Rent.Application.csproj", "{0CA02BD8-2337-4533-8FA5-F04C9DC4048C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Domain", "src\Shelf\Library.Shelf.Domain\Library.Shelf.Domain.csproj", "{F358C6B4-8A69-41BE-AB7A-310F6DB45BFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Domain", "src\Library.Rent.Domain\Library.Rent.Domain.csproj", "{BDDFDEA1-4F5B-410E-A7D1-3B3A11633FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Application", "src\Rent\Library.Rent.Application\Library.Rent.Application.csproj", "{0CA02BD8-2337-4533-8FA5-F04C9DC4048C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Infra", "src\Library.Rent.Infra\Library.Rent.Infra.csproj", "{38D7FBA6-B635-4B1C-840F-198CCB482984}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Domain", "src\Rent\Library.Rent.Domain\Library.Rent.Domain.csproj", "{BDDFDEA1-4F5B-410E-A7D1-3B3A11633FA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Application", "src\Library.Shelf.Application\Library.Shelf.Application.csproj", "{95E8E586-B110-4DA8-8ADC-F10A861F6251}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Shelf.Infra", "src\Library.Shelf.Infra\Library.Shelf.Infra.csproj", "{294896A1-86E9-45B6-A470-1773E5F4A90F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Rent.Infra", "src\Rent\Library.Rent.Infra\Library.Rent.Infra.csproj", "{38D7FBA6-B635-4B1C-840F-198CCB482984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
