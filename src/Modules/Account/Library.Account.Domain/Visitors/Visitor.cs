@@ -1,7 +1,13 @@
-﻿using Library.Core;
+﻿using FluentValidation.Results;
+using Library.Core;
 
 namespace Library.Account.Domain.Visitors
 {
-    public class Visitor : IAggregateRoot
-    { }
+    public class Visitor : Entity, IAggregateRoot
+    {
+        public override ValidationResult Validate()
+        {
+            return new VisitorValidation().Validate(this);
+        }
+    }
 }

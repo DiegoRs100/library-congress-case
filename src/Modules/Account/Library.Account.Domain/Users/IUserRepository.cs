@@ -2,6 +2,6 @@
 {
     public interface IUserRepository
     {
-        public Task<User> AddUserAsync(User user);
+        public Task AddUserAsync(User user);
     }
 }
