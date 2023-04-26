@@ -1,5 +1,3 @@
 ﻿namespace Library.Shelf.Domain.ValueObjects.Locations;
 
-public class Location
-{
-}
+public record Location(string Session, int Hall, int Bookcase, int Shelf) { }
