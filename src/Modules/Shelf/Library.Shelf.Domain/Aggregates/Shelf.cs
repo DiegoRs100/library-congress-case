@@ -9,6 +9,8 @@ public class Shelf
 
     public Guid Id { get; private set; }
 
+    public bool IsActive { get; private set; }
+
     public bool IsDeleted { get; private set; }
 
     public string Title { get; private set; }
@@ -19,4 +21,23 @@ public class Shelf
 
     public IReadOnlyCollection<ShelfItem> ShelfItems 
         => _shelfItems;
+
+    //TODO: method overloading?
+    public void CreateShelf() { }
+
+    public void DeleteShelf() { }
+
+    public void ActivateShelf() { }
+
+    public void DeactivateShelf() { }
+
+    public void AddShelfItem() { }
+
+    public void RemoveShelfItem() { }
+
+    public void ChangeShelfLocation() { }
+
+    public void ChangeShelfTitle() { }
+
+    public void ChangeShelfDescription() { }
 }
