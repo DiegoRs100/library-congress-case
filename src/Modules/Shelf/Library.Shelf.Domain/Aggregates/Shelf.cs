@@ -7,6 +7,10 @@ public class Shelf
 {
     private readonly List<ShelfItem> _shelfItems = new();
 
+    public Guid Id { get; private set; }
+
+    public bool IsDeleted { get; private set; }
+
     public string Title { get; private set; }
 
     public string Description { get; private set; }
