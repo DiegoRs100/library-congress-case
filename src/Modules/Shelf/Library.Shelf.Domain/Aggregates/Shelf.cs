@@ -29,7 +29,11 @@ public class Shelf
 
     public void ActivateShelf() { }
 
-    public void DeactivateShelf() { }
+    public void DeactivateShelf() 
+    { 
+        if(IsActive)
+            IsActive = false;
+    }
 
     public void AddShelfItem() { }
 
