@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Library.Shelf.Domain.ValueTypes;
 
-namespace Library.Shelf.Domain.ValueObjects.Books
+namespace Library.Shelf.Domain.ValueObjects.Books;
+
+public record Book (string Name, string Description, string Author, Language Language)
 {
-    internal class Book
-    {
-    }
 }
