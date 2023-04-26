@@ -15,4 +15,7 @@ public sealed class Category : SmartEnum<Category>
         : base(name, value)
     {
     }
+
+    public static implicit operator string(Category category)
+        => category.Name;
 }
