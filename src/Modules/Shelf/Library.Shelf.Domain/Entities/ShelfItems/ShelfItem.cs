@@ -23,7 +23,7 @@ public class ShelfItem
 
     public int Quantity { get; private set; }
 
-    public void Increaase(int quantity)
+    public void Increase(int quantity)
         => Quantity += quantity;
 
     public void Decrease(int quantity)
