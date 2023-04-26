@@ -19,7 +19,7 @@ public class Shelf
 
     public Location Location { get; private set; }
 
-    public IReadOnlyCollection<ShelfItem> ShelfItems 
+    public IReadOnlyCollection<ShelfItem> Items 
         => _shelfItems;
 
     //TODO: method overloading?
@@ -27,7 +27,11 @@ public class Shelf
 
     public void DeleteShelf() { }
 
-    public void ActivateShelf() { }
+    public void ActivateShelf() 
+    {
+        if (Items.Any() && IsActive is false)
+            IsActive = true;
+    }
 
     public void DeactivateShelf() 
     { 
