@@ -25,7 +25,8 @@ public class Shelf
     //TODO: method overloading?
     public void CreateShelf() { }
 
-    public void DeleteShelf() { }
+    public void DeleteShelf() 
+        => IsDeleted = true;
 
     public void ActivateShelf() 
     {
