@@ -31,7 +31,7 @@ public class Shelf
     public void Handle(ICommand command)
         => Handle(command as dynamic);
 
-    public void Handle(Command.CreateShelf command)
+    private void Handle(Command.CreateShelf command)
         => ApplyEvent(new DomainEvent.ShelfCreated(Guid.NewGuid(), command.Title, command.Description, command.Location));
 
     public void DeleteShelf() 
