@@ -14,6 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
 		<ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
 	</ItemGroup>
 

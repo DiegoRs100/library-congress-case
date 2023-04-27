@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using Library.Integration.Abstractions.Messages;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Windows.Input;
 
 namespace Library.Api.Abstractions;
 
