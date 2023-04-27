@@ -22,7 +22,7 @@ public class Shelf
 
     public Location Location { get; private set; }
 
-    public IReadOnlyCollection<ShelfItem> Items 
+    public IReadOnlyCollection<ShelfItem> Items
         => _shelfItems;
 
     public IReadOnlyCollection<IDomainEvent> Events
@@ -72,4 +72,7 @@ public class Shelf
         Description= @event.Description;
         Location = @event.Location;
     }
+
+    private void When(DomainEvent.ShelfDeleted _)
+        => IsDeleted = true;
 }
