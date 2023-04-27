@@ -32,7 +32,7 @@ public class Shelf
         => Handle(command as dynamic);
 
     private void Handle(Command.CreateShelf command)
-        => ApplyEvent(new DomainEvent.ShelfCreated(Guid.NewGuid(), command.Title, command.Description, command.Location));
+        => ApplyEvent(new DomainEvent.ShelfCreated(command.ShelfId, command.Title, command.Description, command.Location));
 
     public void DeleteShelf() 
         => IsDeleted = true;
