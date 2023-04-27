@@ -5,7 +5,7 @@ namespace Library.Integration.Services.Shelf;
 
 public static class Command
 {
-    public record CreateShelf(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, ICommand;
+    public record CreateShelf(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, ICommand<Guid>;
 
-    public record DeleteShelf(Guid ShelfId) : Message, ICommand;
+    public record DeleteShelf(Guid ShelfId) : Message, ICommand<Guid>;
 }
