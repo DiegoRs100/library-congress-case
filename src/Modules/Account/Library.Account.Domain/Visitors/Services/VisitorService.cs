@@ -34,15 +34,13 @@ namespace Library.Account.Domain.Visitors.Services
                 return null!;
             }
 
-            // Valida se ja existe outro consumidor com o mesmo CPF
-
             await _visitorRepository.AddVisitorAsync(visitor);
             var user = await _userService.CreateUserAsync(visitor);
 
             if (user == null)
                 return null!;
 
-            // Savechanges
+            //TODO: Savechanges
 
             return visitor;
         }

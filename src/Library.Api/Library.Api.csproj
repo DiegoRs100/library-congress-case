@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
+    <ProjectReference Include="..\Modules\Rent\Library.Rent.Application\Library.Rent.Application.csproj" />
+    <ProjectReference Include="..\Modules\Rent\Library.Rent.Domain\Library.Rent.Domain.csproj" />
     <ProjectReference Include="..\Shared\Devpack.Notifications\src\Devpack.Notifications\Devpack.Notifications.csproj" />
   </ItemGroup>
 
