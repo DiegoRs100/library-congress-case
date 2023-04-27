@@ -1,4 +1,6 @@
-﻿using Library.Shelf.Domain.Entities.ShelfItems;
+﻿using Library.Integration.Abstractions.Messages;
+using Library.Integration.Services.Shelf;
+using Library.Shelf.Domain.Entities.ShelfItems;
 using Library.Shelf.Domain.ValueObjects.Locations;
 
 namespace Library.Shelf.Domain.Aggregates;
@@ -6,6 +8,7 @@ namespace Library.Shelf.Domain.Aggregates;
 public class Shelf
 {
     private readonly List<ShelfItem> _shelfItems = new();
+    private readonly List<IDomainEvent> _shelfEvents = new();
 
     public Guid Id { get; private set; }
 
@@ -22,8 +25,13 @@ public class Shelf
     public IReadOnlyCollection<ShelfItem> Items 
         => _shelfItems;
 
-    //TODO: method overloading?
-    public void CreateShelf() { }
+    public IReadOnlyCollection<IDomainEvent> Events
+        => _shelfEvents;
+
+    public void Handle(ICommand command)
+        => Handle(command as dynamic);
+
+    public void Handle(Command.CreateShelf command) { }
 
     public void DeleteShelf() 
         => IsDeleted = true;
@@ -49,4 +57,9 @@ public class Shelf
     public void ChangeShelfTitle() { }
 
     public void ChangeShelfDescription() { }
+
+    private void ApplyEvent(IDomainEvent domainEvent)
+    {
+        _shelfEvents.Add(domainEvent);
+    }
 }
