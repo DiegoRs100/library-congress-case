@@ -2,4 +2,4 @@
 
 namespace Library.Integration.Abstractions.Messages;
 
-public interface IDomainEvent : IMessage, IPublisher { }
+public interface IDomainEvent : IMessage, INotification { }

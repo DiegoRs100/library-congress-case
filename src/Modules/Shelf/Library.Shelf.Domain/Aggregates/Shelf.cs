@@ -61,5 +61,6 @@ public class Shelf
     private void ApplyEvent(IDomainEvent domainEvent)
     {
         _shelfEvents.Add(domainEvent);
+
     }
 }
