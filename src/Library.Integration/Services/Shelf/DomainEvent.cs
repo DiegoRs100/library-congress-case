@@ -16,4 +16,6 @@ public static class DomainEvent
     public record ShelfItemAdded(Guid ShelfId, Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message, IDomainEvent;
 
     public record ShelfItemIncreased(Guid ShelfId, Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message, IDomainEvent;
+
+    public record ShelfItemRemoved(Guid ShelfId, Guid ShelfItemId) : Message, IDomainEvent;
 }
