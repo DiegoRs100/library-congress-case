@@ -22,15 +22,7 @@ builder.Host
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
-        services.AddMediatR(configuration =>
-        {
-            var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-            .Select(assembly
-                => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
-
-            configuration.RegisterServicesFromAssemblies(assemblies.ToArray());
-        });
-
+        services.ConfigureMediatR();
         services.ConfigureServices();
         services.AddSmartNotification();
     });
