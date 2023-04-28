@@ -1,6 +1,6 @@
 ﻿using Library.Core;
 
-namespace Library.Integration.Account.Users
+namespace Library.Integration.Services.Account.Users
 {
     public record UserCreatedEvent : Event
     {

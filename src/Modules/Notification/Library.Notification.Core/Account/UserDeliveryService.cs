@@ -1,4 +1,4 @@
-﻿using Library.Integration.Account.Users;
+﻿using Library.Integration.Services.Account.Users;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
