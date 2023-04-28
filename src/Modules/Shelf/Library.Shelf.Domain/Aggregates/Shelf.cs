@@ -64,7 +64,8 @@ public partial class Shelf
     private void Handle(Command.RemoveShelfItem command)
         => ApplyEvent(new DomainEvent.ShelfItemRemoved(command.ShelfId, command.ShelfItemId));
 
-    public void ChangeShelfLocation() { }
+    private void Handle(Command.ChangeShelfLocation command)
+        => ApplyEvent(new DomainEvent.LocationShelfChanged(command.ShelfId, command.Location));
 
     public void ChangeShelfTitle() { }
 
@@ -101,4 +102,7 @@ public partial class Shelf
 
     private void When(DomainEvent.ShelfItemRemoved @event)
         => _shelfItems.RemoveAll(item => item.Id.Equals(@event.ShelfId));
+
+    private void When(DomainEvent.LocationShelfChanged @event)
+        => Location = @event.Location;
 }
