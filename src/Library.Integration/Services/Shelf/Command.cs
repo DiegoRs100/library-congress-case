@@ -16,4 +16,6 @@ public static class Command
     public record AddShelfItem(Guid ShelfId, Dto.Book Book, decimal Price, int Quantity) : Message, ICommand;
 
     public record RemoveShelfItem(Guid ShelfId, Guid ShelfItemId) : Message, ICommand;
+
+    public record ChangeShelfLocation(Guid ShelfId, Dto.Location Location) : Message, ICommand;
 }
