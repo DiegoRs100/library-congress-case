@@ -2,6 +2,6 @@
 
 namespace Library.Core
 {
-    public abstract class Event : INotification
+    public abstract record Event : INotification
     { }
 }

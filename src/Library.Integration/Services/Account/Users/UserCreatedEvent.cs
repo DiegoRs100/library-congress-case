@@ -1,8 +1,14 @@
 ﻿using Library.Core;
-using MediatR;
 
 namespace Library.Integration.Services.Account.Users
 {
-    public class UserCreatedEvent : Event
-    { }
+    public record UserCreatedEvent : Event
+    {
+        public Guid UserId { get; set; }
+
+        public UserCreatedEvent(Guid userId)
+        {
+            UserId = userId;
+        }
+    }
 }

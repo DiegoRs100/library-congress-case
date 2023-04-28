@@ -1,30 +1,40 @@
-﻿using Library.Account.Domain.Visitors;
+﻿using Devpack.Notifications.Notifier;
+using Library.Account.Domain.Visitors;
+using Library.Core.Extensions;
+using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Library.Account.Domain.Users.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ILogger<UserService> _logger;
+        private readonly IMediator _mediator;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository,
+                           ILogger<UserService> logger,
+                           IMediator mediator)
         {
             _userRepository = userRepository;
+            _mediator = mediator;
+            _logger = logger;
         }
 
         public async Task<User> CreateUserAsync(Visitor visitor)
         {
             var user = new User(visitor);
-            var validation = user.Validate();
 
-            if (!validation.IsValid)
+            if (!user.Validate().IsValid)
             {
-                // notificar erros de validação
+                _logger.LogError("Could not create visitor equivalent userId : {id}", visitor.Id);
                 return null!;
             }
 
             await _userRepository.AddUserAsync(user);
+            await _userRepository.CommitAsync();
 
-            // Savechanges
+            await _mediator.PublishDomainEvents(user.GetDomainEvents());
 
             return user;
         }
