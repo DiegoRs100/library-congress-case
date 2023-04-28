@@ -16,4 +16,8 @@
     <ProjectReference Include="..\..\..\Shared\Devpack.Notifications\src\Devpack.Notifications\Devpack.Notifications.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Users\Validators\" />
+  </ItemGroup>
+
 </Project>
