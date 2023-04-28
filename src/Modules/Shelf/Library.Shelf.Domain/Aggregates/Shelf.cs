@@ -6,7 +6,7 @@ using Library.Shelf.Domain.ValueTypes;
 
 namespace Library.Shelf.Domain.Aggregates;
 
-public class Shelf
+public partial class Shelf
 {
     private readonly List<ShelfItem> _shelfItems = new();
     private readonly List<IDomainEvent> _shelfEvents = new();
@@ -44,10 +44,10 @@ public class Shelf
             ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
     }
 
-    public void DeactivateShelf() 
-    { 
-        if(IsActive)
-            IsActive = false;
+    public void Handle(Command.DeactivateShelf command) 
+    {
+        if (IsActive)
+            ApplyEvent(new DomainEvent.ShelfDeactivated(command.ShelfId));
     }
 
     public void AddShelfItem() { }
@@ -79,4 +79,7 @@ public class Shelf
 
     private void When(DomainEvent.ShelfActivated _)
         => IsActive = true;
+
+    private void When(DomainEvent.ShelfDeactivated _)
+        => IsDeleted = false;
 }
