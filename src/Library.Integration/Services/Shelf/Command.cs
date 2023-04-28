@@ -8,4 +8,8 @@ public static class Command
     public record CreateShelf(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, ICommand<Guid>;
 
     public record DeleteShelf(Guid ShelfId) : Message, ICommand<Guid>;
+
+    public record ActivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
+
+    public record DeactivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
 }
