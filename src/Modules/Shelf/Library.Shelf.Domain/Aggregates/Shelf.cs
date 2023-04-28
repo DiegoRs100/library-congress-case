@@ -67,7 +67,8 @@ public partial class Shelf
     private void Handle(Command.ChangeShelfLocation command)
         => ApplyEvent(new DomainEvent.LocationShelfChanged(command.ShelfId, command.Location));
 
-    public void ChangeShelfTitle() { }
+    private void Handle(Command.ChangeShelfTitle command)
+        => ApplyEvent(new DomainEvent.ShelfTitleChanged(command.ShelfId, command.Title));
 
     public void ChangeShelfDescription() { }
 
@@ -105,4 +106,7 @@ public partial class Shelf
 
     private void When(DomainEvent.LocationShelfChanged @event)
         => Location = @event.Location;
+
+    private void When(DomainEvent.ShelfTitleChanged @event)
+        => Title = @event.Title;
 }
