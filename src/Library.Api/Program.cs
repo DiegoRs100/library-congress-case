@@ -9,7 +9,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg =>
     {
         var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-            .Select(assembly => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
+            .Select(assembly 
+                => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
 
         cfg.RegisterServicesFromAssemblies(assemblies.ToArray());
     });
