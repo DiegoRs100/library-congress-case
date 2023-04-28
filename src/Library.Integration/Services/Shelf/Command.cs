@@ -5,15 +5,15 @@ namespace Library.Integration.Services.Shelf;
 
 public static class Command
 {
-    public record CreateShelf(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, ICommand<Guid>;
+    public record CreateShelf(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, ICommand;
 
-    public record DeleteShelf(Guid ShelfId) : Message, ICommand<Guid>;
+    public record DeleteShelf(Guid ShelfId) : Message, ICommand;
 
-    public record ActivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
+    public record ActivateShelf(Guid ShelfId) : Message, ICommand;
 
-    public record DeactivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
+    public record DeactivateShelf(Guid ShelfId) : Message, ICommand;
 
-    public record AddShelfItem(Guid ShelfId, Dto.Book Book, decimal Price, int Quantity) : Message, ICommand<Guid>;
+    public record AddShelfItem(Guid ShelfId, Dto.Book Book, decimal Price, int Quantity) : Message, ICommand;
 
-    public record RemoveShelfItem(Guid ShelfId, Guid ShelfItemId) : Message, ICommand<Guid>;
+    public record RemoveShelfItem(Guid ShelfId, Guid ShelfItemId) : Message, ICommand;
 }

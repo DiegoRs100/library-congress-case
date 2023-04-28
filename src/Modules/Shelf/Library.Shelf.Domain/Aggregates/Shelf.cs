@@ -29,7 +29,7 @@ public partial class Shelf
     public IReadOnlyCollection<IDomainEvent> Events
         => _shelfEvents;
 
-    public void Handle<TResult>(ICommand<TResult> command)
+    public void Handle(ICommand command)
         => Handle(command as dynamic);
 
     private void Handle(Command.CreateShelf command)

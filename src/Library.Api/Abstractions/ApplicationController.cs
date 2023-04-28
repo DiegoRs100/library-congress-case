@@ -12,7 +12,7 @@ public class ApplicationController : ControllerBase
     protected ApplicationController(IMediator mediator)
         => _mediator = mediator;
 
-    protected async Task<IActionResult> SendCommandAsync<TResult>(ICommand<TResult> command, CancellationToken cancellationToken)
+    protected async Task<IActionResult> SendCommandAsync(ICommand command, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(command, cancellationToken);
         return Ok(result);
