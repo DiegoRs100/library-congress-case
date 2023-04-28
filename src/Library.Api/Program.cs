@@ -1,12 +1,23 @@
 using Library.Api.Config;
+using Library.Integration.Abstractions.Messages;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-builder.Services.ConfigureServices();
+
+builder.Services.AddMediatR(cfg =>
+    {
+        var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
+            .Select(assembly => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
+
+        cfg.RegisterServicesFromAssemblies(assemblies.ToArray());
+    });
+
+//builder.Services.ConfigureServices();
 
 var app = builder.Build();
 

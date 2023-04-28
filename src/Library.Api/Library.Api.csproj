@@ -14,8 +14,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Library.CrossCutting\Library.Core.csproj" />
 		<ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
 		<ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
+		<ProjectReference Include="..\Modules\Account\Library.Account.Infra\Library.Account.Infra.csproj" />
+		<ProjectReference Include="..\Modules\Notification\Library.Notification.Core\Library.Notification.csproj" />
+		<ProjectReference Include="..\Modules\Rent\Library.Rent.Application\Library.Rent.Application.csproj" />
+		<ProjectReference Include="..\Modules\Rent\Library.Rent.Infra\Library.Rent.Infra.csproj" />
+		<ProjectReference Include="..\Modules\Shelf\Library.Shelf.Application\Library.Shelf.Application.csproj" />
+		<ProjectReference Include="..\Modules\Shelf\Library.Shelf.Infra\Library.Shelf.Infra.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controllers\v1\" />
 	</ItemGroup>
 
 </Project>

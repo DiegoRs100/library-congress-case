@@ -3,11 +3,11 @@ using Library.Integration.Services.Shelf;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Library.Api.Controllers.v1;
+namespace Library.Api.Controllers;
 
 public class ShelfController : ApplicationController
 {
-    protected ShelfController(IMediator mediator) 
+    public ShelfController(IMediator mediator)
         : base(mediator) { }
 
     [HttpPost]
