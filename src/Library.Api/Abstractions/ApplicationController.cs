@@ -15,6 +15,6 @@ public class ApplicationController : ControllerBase
     protected async Task<IActionResult> SendCommandAsync(ICommand command, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(command, cancellationToken);
-        return Ok(result);
+        return result.Any() ? Ok(result) : BadRequest();
     }
 }
