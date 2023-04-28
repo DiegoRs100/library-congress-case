@@ -2,6 +2,7 @@
 using Library.Integration.Services.Shelf;
 using Library.Shelf.Domain.Entities.ShelfItems;
 using Library.Shelf.Domain.ValueObjects.Locations;
+using Library.Shelf.Domain.ValueTypes;
 
 namespace Library.Shelf.Domain.Aggregates;
 
@@ -28,7 +29,7 @@ public class Shelf
     public IReadOnlyCollection<IDomainEvent> Events
         => _shelfEvents;
 
-    public void Handle(ICommand command)
+    public void Handle<TResult>(ICommand<TResult> command)
         => Handle(command as dynamic);
 
     private void Handle(Command.CreateShelf command)
