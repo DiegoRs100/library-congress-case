@@ -13,5 +13,5 @@ public static class Command
 
     public record DeactivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
 
-    public record AddShelfItem(Guid ShelfId) : Message, ICommand<Guid>;
+    public record AddShelfItem(Guid ShelfId, Dto.Book Book, decimal Price, int Quantity) : Message, ICommand<Guid>;
 }
