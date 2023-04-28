@@ -42,3 +42,10 @@ __Level:__ Intermediate
 * Entity Framework
 * Automapper
 * FluentValidation
+
+---
+
+## Modules
+
+### Shelf Module
+![SHELF UML](.\.assets\images\uml-shelf-module.png)
