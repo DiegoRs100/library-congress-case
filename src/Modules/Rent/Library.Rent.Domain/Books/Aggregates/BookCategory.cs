@@ -1,4 +1,4 @@
-﻿using Library.Core;
+﻿using Library.Core.Abstractions;
 
 namespace Library.Rent.Domain.Books.Aggregates
 {

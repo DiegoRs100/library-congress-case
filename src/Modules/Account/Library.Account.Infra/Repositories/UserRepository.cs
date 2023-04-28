@@ -1,5 +1,5 @@
 ﻿using Library.Account.Domain.Users;
-using Library.Core.Infra;
+using Library.Core.Abstractions.Infra;
 using Microsoft.Extensions.Logging;
 
 namespace Library.Account.Infra.Repositories

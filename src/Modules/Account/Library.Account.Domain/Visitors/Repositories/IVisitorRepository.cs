@@ -1,4 +1,4 @@
-﻿using Library.Core.Infra;
+﻿using Library.Core.Abstractions.Infra;
 
 namespace Library.Account.Domain.Visitors.Repositories
 {

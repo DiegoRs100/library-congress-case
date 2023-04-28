@@ -1,4 +1,4 @@
-﻿namespace Library.Core.Infra
+﻿namespace Library.Core.Abstractions.Infra
 {
     public interface IRepository
     {

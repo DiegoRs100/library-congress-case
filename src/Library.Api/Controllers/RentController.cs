@@ -18,7 +18,7 @@ namespace Library.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRentAsync(CreateRentCommand command)
         {
-            await _rentAppService.CreateRent(command);
+            await _rentAppService.RentAsync(command);
             return Ok();
         }
     }

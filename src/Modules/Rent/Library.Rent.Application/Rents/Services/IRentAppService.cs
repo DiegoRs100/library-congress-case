@@ -1,11 +1,10 @@
-﻿using Library.Rent.Domain.Rents;
-using Library.Rent.Domain.Rents.Commands;
+﻿using Library.Rent.Domain.Rents.Commands;
 
 namespace Library.Rent.Application.Rents.Services
 {
     public interface IRentAppService
     {
-        Task Rent(CreateRentCommand command);
+        Task RentAsync(CreateRentCommand command);
         Task GetRentsByUser(CreateRentCommand command);
 
         Task ReturnRentedItems(CreateRentCommand command);

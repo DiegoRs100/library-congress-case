@@ -1,4 +1,4 @@
-﻿using Library.Core;
+﻿using Library.Core.Abstractions;
 using Library.Rent.Domain.Books;
 using Library.Rent.Domain.Rents.Commands;
 
@@ -12,7 +12,7 @@ namespace Library.Rent.Domain.Rents
         public Rent(CreateRentCommand command)
         {
             VisitorId = command.VisitorId;
-            Itens = command.Itens;
+            //Itens = command.Itens;
         }
 
         // TODO: Criar validation

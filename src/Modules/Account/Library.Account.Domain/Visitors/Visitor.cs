@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using Library.Account.Domain.Visitors.Enums;
 using Library.Account.Domain.Visitors.ValueObjects;
-using Library.Core;
+using Library.Core.Abstractions;
 using EmailObject = Library.Account.Domain.Visitors.ValueObjects.Email;
 
 namespace Library.Account.Domain.Visitors
