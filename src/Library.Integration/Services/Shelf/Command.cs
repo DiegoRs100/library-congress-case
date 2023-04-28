@@ -12,4 +12,6 @@ public static class Command
     public record ActivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
 
     public record DeactivateShelf(Guid ShelfId) : Message, ICommand<Guid>;
+
+    public record AddShelfItem(Guid ShelfId) : Message, ICommand<Guid>;
 }
