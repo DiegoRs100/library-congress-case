@@ -6,7 +6,7 @@ using Library.Shelf.Domain.ValueTypes;
 
 namespace Library.Shelf.Domain.Aggregates;
 
-public class Shelf
+public partial class Shelf
 {
     private readonly List<ShelfItem> _shelfItems = new();
     private readonly List<IDomainEvent> _shelfEvents = new();
@@ -29,36 +29,49 @@ public class Shelf
     public IReadOnlyCollection<IDomainEvent> Events
         => _shelfEvents;
 
-    public void Handle<TResult>(ICommand<TResult> command)
+    public void Handle(ICommand command)
         => Handle(command as dynamic);
 
     private void Handle(Command.CreateShelf command)
         => ApplyEvent(new DomainEvent.ShelfCreated(command.ShelfId, command.Title, command.Description, command.Location));
 
-    public void DeleteShelf() 
-        => IsDeleted = true;
+    private void Handle(Command.DeleteShelf command)
+        => ApplyEvent(new DomainEvent.ShelfDeleted(command.ShelfId));
 
-    public void ActivateShelf() 
+    private void Handle(Command.ActivateShelf command) 
     {
         if (Items.Any() && IsActive is false)
-            IsActive = true;
+            ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
     }
 
-    public void DeactivateShelf() 
-    { 
-        if(IsActive)
-            IsActive = false;
+    private void Handle(Command.DeactivateShelf command) 
+    {
+        if (IsActive)
+            ApplyEvent(new DomainEvent.ShelfDeactivated(command.ShelfId));
     }
 
-    public void AddShelfItem() { }
+    private void Handle(Command.AddShelfItem command)
+    {
+        var shelfItem = _shelfItems
+            .Where(item => item.Book.Equals(command.Book))
+            .SingleOrDefault(item => item.Price.Equals(command.Price));
 
-    public void RemoveShelfItem() { }
+        ApplyEvent(shelfItem is { IsDeleted: false }
+            ? new DomainEvent.ShelfItemIncreased(command.ShelfId, shelfItem.Id, command.Book, command.Price, command.Quantity)
+            : new DomainEvent.ShelfItemAdded(command.ShelfId, Guid.NewGuid(), command.Book, command.Price, command.Quantity));
+    }
 
-    public void ChangeShelfLocation() { }
+    private void Handle(Command.RemoveShelfItem command)
+        => ApplyEvent(new DomainEvent.ShelfItemRemoved(command.ShelfId, command.ShelfItemId));
 
-    public void ChangeShelfTitle() { }
+    private void Handle(Command.ChangeShelfLocation command)
+        => ApplyEvent(new DomainEvent.LocationShelfChanged(command.ShelfId, command.Location));
 
-    public void ChangeShelfDescription() { }
+    private void Handle(Command.ChangeShelfTitle command)
+        => ApplyEvent(new DomainEvent.ShelfTitleChanged(command.ShelfId, command.Title));
+
+    private void Handle(Command.ChangeShelfDescription command)
+        => ApplyEvent(new DomainEvent.ShelfDescriptionChanged(command.ShelfId, command.Description));
 
     private void ApplyEvent(IDomainEvent domainEvent)
     {
@@ -76,4 +89,28 @@ public class Shelf
 
     private void When(DomainEvent.ShelfDeleted _)
         => IsDeleted = true;
+
+    private void When(DomainEvent.ShelfActivated _)
+        => IsActive = true;
+
+    private void When(DomainEvent.ShelfDeactivated _)
+        => IsDeleted = false;
+
+    private void When(DomainEvent.ShelfItemAdded @event)
+        => _shelfItems.Add(new(false, @event.Book, @event.Price, @event.Quantity));
+
+    private void When(DomainEvent.ShelfItemIncreased @event)
+        => _shelfItems.Single(item => item.Id.Equals(@event.ShelfItemId)).Increase(@event.Quantity);
+
+    private void When(DomainEvent.ShelfItemRemoved @event)
+        => _shelfItems.RemoveAll(item => item.Id.Equals(@event.ShelfId));
+
+    private void When(DomainEvent.LocationShelfChanged @event)
+        => Location = @event.Location;
+
+    private void When(DomainEvent.ShelfTitleChanged @event)
+        => Title = @event.Title;
+
+    private void When(DomainEvent.ShelfDescriptionChanged @event)
+        => Description = @event.Description;
 }
