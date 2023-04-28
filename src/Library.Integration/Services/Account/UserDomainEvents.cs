@@ -1,6 +1,6 @@
 ﻿using Library.Integration.Abstractions.Messages;
 
-namespace Library.Integration.Services.Account.Users
+namespace Library.Integration.Services.Account
 {
     public static class UserDomainEvents
     {

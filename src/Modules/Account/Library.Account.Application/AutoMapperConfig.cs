@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using Library.Account.Application.Visitors.Dto_s;
 using Library.Account.Domain.Visitors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Library.Account.Domain.Visitors.ValueObjects;
 
 namespace Library.Account.Application
 {
@@ -14,6 +10,7 @@ namespace Library.Account.Application
         public AutoMapperConfig()
         {
             CreateMap<VisitorDto, Visitor>().ReverseMap();
+            CreateMap<AddressDto, Address>().ReverseMap();
         }
     }
 }

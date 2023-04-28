@@ -27,6 +27,6 @@ namespace Library.Account.Domain.Visitors
                 .WithMessage("Invalid Email.");
 
             RuleFor(v => v.Address).SetValidator(new AddressValidator());
-        }        
+        }
     }
 }

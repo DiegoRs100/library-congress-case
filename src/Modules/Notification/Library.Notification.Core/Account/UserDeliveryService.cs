@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using static Library.Integration.Services.Account.Users.UserDomainEvents;
+using static Library.Integration.Services.Account.UserDomainEvents;
 
 namespace Library.Notification.Account
 {
