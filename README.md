@@ -48,4 +48,4 @@ __Level:__ Intermediate
 ## Modules
 
 ### Shelf Module
-![SHELF UML](.\.assets\images\uml-shelf-module.png)
+![SHELF UML](.assets/images/uml-shelf-module.png)
