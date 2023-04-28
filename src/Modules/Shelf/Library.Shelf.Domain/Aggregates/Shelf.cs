@@ -50,7 +50,8 @@ public partial class Shelf
             ApplyEvent(new DomainEvent.ShelfDeactivated(command.ShelfId));
     }
 
-    public void AddShelfItem() { }
+    public void Handle(Command.AddShelfItem command)
+        => ApplyEvent(new DomainEvent.ShelfItemAdded(command.ShelfId, command.Book, command.Price, command.Quantity));
 
     public void RemoveShelfItem() { }
 
@@ -82,4 +83,7 @@ public partial class Shelf
 
     private void When(DomainEvent.ShelfDeactivated _)
         => IsDeleted = false;
+
+    private void When(DomainEvent.ShelfItemAdded @event)
+        => _shelfItems.Add(new(false, @event.Book, @event.Price, @event.Quantity));
 }
