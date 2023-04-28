@@ -1,8 +1,8 @@
 ﻿using Library.Account.Application;
 
-namespace Library.Api.Config
+namespace Library.Api.DependencyInjection
 {
-    public static class IoC
+    public static class ServiceCollectionExtensions
     {
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {

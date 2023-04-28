@@ -1,6 +1,6 @@
 using System.Reflection;
 using Devpack.Notifications;
-using Library.Api.Config;
+using Library.Api.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
