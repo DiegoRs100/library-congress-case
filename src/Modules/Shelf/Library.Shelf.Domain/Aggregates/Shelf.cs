@@ -35,8 +35,8 @@ public class Shelf
     private void Handle(Command.CreateShelf command)
         => ApplyEvent(new DomainEvent.ShelfCreated(command.ShelfId, command.Title, command.Description, command.Location));
 
-    public void DeleteShelf() 
-        => IsDeleted = true;
+    public void DeleteShelf(Command.DeleteShelf command)
+        => ApplyEvent(new DomainEvent.ShelfDeleted(command.ShelfId));
 
     public void ActivateShelf() 
     {
