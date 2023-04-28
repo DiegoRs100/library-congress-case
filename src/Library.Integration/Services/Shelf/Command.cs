@@ -18,4 +18,6 @@ public static class Command
     public record RemoveShelfItem(Guid ShelfId, Guid ShelfItemId) : Message, ICommand;
 
     public record ChangeShelfLocation(Guid ShelfId, Dto.Location Location) : Message, ICommand;
+
+    public record ChangeShelfTitle(Guid ShelfId, string Title) : Message, ICommand;
 }
