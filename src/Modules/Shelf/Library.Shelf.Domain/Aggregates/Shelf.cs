@@ -44,13 +44,13 @@ public partial class Shelf
             ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
     }
 
-    public void Handle(Command.DeactivateShelf command) 
+    private void Handle(Command.DeactivateShelf command) 
     {
         if (IsActive)
             ApplyEvent(new DomainEvent.ShelfDeactivated(command.ShelfId));
     }
 
-    public void Handle(Command.AddShelfItem command)
+    private void Handle(Command.AddShelfItem command)
     {
         var shelfItem = _shelfItems
             .Where(item => item.Book.Equals(command.Book))
@@ -61,7 +61,8 @@ public partial class Shelf
             : new DomainEvent.ShelfItemAdded(command.ShelfId, Guid.NewGuid(), command.Book, command.Price, command.Quantity));
     }
 
-    public void RemoveShelfItem() { }
+    private void Handle(Command.RemoveShelfItem command)
+        => ApplyEvent(new DomainEvent.ShelfItemRemoved(command.ShelfId, command.ShelfItemId));
 
     public void ChangeShelfLocation() { }
 
@@ -97,4 +98,7 @@ public partial class Shelf
 
     private void When(DomainEvent.ShelfItemIncreased @event)
         => _shelfItems.Single(item => item.Id.Equals(@event.ShelfItemId)).Increase(@event.Quantity);
+
+    private void When(DomainEvent.ShelfItemRemoved @event)
+        => _shelfItems.RemoveAll(item => item.Id.Equals(@event.ShelfId));
 }
