@@ -1,5 +1,6 @@
 ﻿using Library.Account.Domain.Visitors;
-using Library.Core;
+using Library.Core.Abstractions;
+using static Library.Integration.Services.Account.Users.UserDomainEvents;
 
 namespace Library.Account.Domain.Users
 {
@@ -10,6 +11,7 @@ namespace Library.Account.Domain.Users
         public User(Visitor visitor)
         {
             VisitorId = visitor.Id;
+            AddDomainEvent(new UserCreated(visitor.Id));
         }
     }
 }

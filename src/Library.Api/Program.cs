@@ -1,4 +1,6 @@
 using System.Reflection;
+using Devpack.Notifications;
+using Library.Api.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddMediatR(cfg =>
 
         cfg.RegisterServicesFromAssemblies(assemblies.ToArray());
     });
+builder.Services.ConfigureServices();
+builder.Services.AddSmartNotification();
 
 var app = builder.Build();
 
