@@ -35,13 +35,13 @@ public class Shelf
     private void Handle(Command.CreateShelf command)
         => ApplyEvent(new DomainEvent.ShelfCreated(command.ShelfId, command.Title, command.Description, command.Location));
 
-    public void DeleteShelf(Command.DeleteShelf command)
+    private void Handle(Command.DeleteShelf command)
         => ApplyEvent(new DomainEvent.ShelfDeleted(command.ShelfId));
 
-    public void ActivateShelf() 
+    private void Handle(Command.ActivateShelf command) 
     {
         if (Items.Any() && IsActive is false)
-            IsActive = true;
+            ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
     }
 
     public void DeactivateShelf() 
@@ -76,4 +76,7 @@ public class Shelf
 
     private void When(DomainEvent.ShelfDeleted _)
         => IsDeleted = true;
+
+    private void When(DomainEvent.ShelfActivated _)
+        => IsActive = true;
 }
