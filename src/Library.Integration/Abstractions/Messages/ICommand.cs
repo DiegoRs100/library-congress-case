@@ -2,4 +2,4 @@
 
 namespace Library.Integration.Abstractions.Messages;
 
-public interface ICommand : IMessage, IRequest { }
+public interface ICommand<TResult> : IMessage, IRequest<TResult> { }
