@@ -22,4 +22,6 @@ public static class DomainEvent
     public record LocationShelfChanged(Guid ShelfId, Dto.Location Location) : Message, IDomainEvent;
 
     public record ShelfTitleChanged(Guid ShelfId, string Title) : Message, IDomainEvent;
+
+    public record ShelfDescriptionChanged(Guid ShelfId, string Description) : Message, IDomainEvent;
 }

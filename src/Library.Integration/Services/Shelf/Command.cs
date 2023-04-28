@@ -20,4 +20,6 @@ public static class Command
     public record ChangeShelfLocation(Guid ShelfId, Dto.Location Location) : Message, ICommand;
 
     public record ChangeShelfTitle(Guid ShelfId, string Title) : Message, ICommand;
+
+    public record ChangeShelfDescription(Guid ShelfId, string Description) : Message, ICommand;
 }
