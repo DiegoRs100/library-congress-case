@@ -8,4 +8,8 @@ public static class DomainEvent
     public record ShelfCreated(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message, IDomainEvent;
 
     public record ShelfDeleted(Guid ShelfId) : Message, IDomainEvent;
+
+    public record ShelfActivated(Guid ShelfId) : Message, IDomainEvent;
+
+    public record ShelfDeactivated(Guid ShelfId) : Message, IDomainEvent;
 }
