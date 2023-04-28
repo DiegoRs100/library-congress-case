@@ -10,16 +10,15 @@
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-	<PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
     <ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
     <ProjectReference Include="..\Modules\Rent\Library.Rent.Application\Library.Rent.Application.csproj" />
     <ProjectReference Include="..\Modules\Rent\Library.Rent.Domain\Library.Rent.Domain.csproj" />
     <ProjectReference Include="..\Shared\Devpack.Notifications\src\Devpack.Notifications\Devpack.Notifications.csproj" />
 	  <ProjectReference Include="..\Modules\Shelf\Library.Shelf.Application\Library.Shelf.Application.csproj" />
-	  <ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
   </ItemGroup>
 
 </Project>

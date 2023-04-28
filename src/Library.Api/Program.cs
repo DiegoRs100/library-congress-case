@@ -31,7 +31,7 @@ builder.Host
             configuration.RegisterServicesFromAssemblies(assemblies.ToArray());
         });
 
-        //services.ConfigureServices();
+        services.ConfigureServices();
         services.AddSmartNotification();
     });
 

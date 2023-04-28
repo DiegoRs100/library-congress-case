@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Abstractions;
 
-[ApiController, Route("api/[controller]")]
+[ApiController]
 public class ApplicationController : ControllerBase
 {
     private readonly IMediator _mediator;

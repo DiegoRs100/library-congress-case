@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Controllers;
 
+[Route("shelf")]
 public class ShelfController : ApplicationController
 {
     public ShelfController(IMediator mediator)

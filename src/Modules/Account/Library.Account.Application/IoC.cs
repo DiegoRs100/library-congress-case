@@ -5,7 +5,6 @@ using Library.Account.Domain.Visitors.Repositories;
 using Library.Account.Domain.Visitors.Services;
 using Library.Account.Infra.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Library.Account.Application
 {
@@ -20,6 +19,8 @@ namespace Library.Account.Application
 
             services.AddScoped<IVisitorRepository, VisitorRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddAutoMapper(typeof(AutoMapperConfig));
 
             return services;
         }

@@ -1,16 +1,17 @@
-using Library.Api.Controllers.Base;
+using Library.Api.Abstractions;
 using Library.Rent.Application.Rents.Services;
 using Library.Rent.Domain.Rents.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.Api.Controllers
 {
     [Route("rent")]
-    public class RentController : MainController
+    public class RentController : ApplicationController
     {
         private readonly IRentAppService _rentAppService;
 
-        public RentController(IRentAppService rentAppService)
+        public RentController(IRentAppService rentAppService, IMediator mediator) : base(mediator)
         {
             _rentAppService = rentAppService;
         }
