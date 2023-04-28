@@ -1,20 +1,26 @@
+using System.Reflection;
 using Devpack.Notifications;
 using Library.Api.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMediatR(cfg =>
+    {
+        var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
+            .Select(assembly 
+                => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
+
+        cfg.RegisterServicesFromAssemblies(assemblies.ToArray());
+    });
 builder.Services.ConfigureServices();
 builder.Services.AddSmartNotification();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

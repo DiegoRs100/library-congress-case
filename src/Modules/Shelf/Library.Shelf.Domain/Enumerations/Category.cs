@@ -12,9 +12,7 @@ public sealed class Category : SmartEnum<Category>
     public static readonly Category Medicine = new(nameof(Medicine), 6);
 
     public Category(string name, int value) 
-        : base(name, value)
-    {
-    }
+        : base(name, value) { }
 
     public static implicit operator string(Category category)
         => category.Name;
