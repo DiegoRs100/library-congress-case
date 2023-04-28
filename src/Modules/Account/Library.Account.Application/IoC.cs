@@ -19,7 +19,7 @@ namespace Library.Account.Application
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IVisitorRepository, VisitorRepository>();
-            services.AddScoped<IUserRepository, IUserRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
