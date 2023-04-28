@@ -4,20 +4,36 @@ using Library.Api.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddMediatR(cfg =>
+builder.Host
+    .UseDefaultServiceProvider((context, provider) =>
     {
-        var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-            .Select(assembly 
+        provider.ValidateScopes = true;
+        provider.ValidateOnBuild= true;
+    })
+    .ConfigureAppConfiguration((context, configurationBuilder) =>
+    {
+        configurationBuilder
+            .AddUserSecrets(Assembly.GetExecutingAssembly())
+            .AddEnvironmentVariables();
+    })
+    .ConfigureServices((context, services) =>
+    {
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+
+        services.AddMediatR(configuration =>
+        {
+            var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
+            .Select(assembly
                 => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
 
-        cfg.RegisterServicesFromAssemblies(assemblies.ToArray());
+            configuration.RegisterServicesFromAssemblies(assemblies.ToArray());
+        });
+
+        services.ConfigureServices();
+        services.AddSmartNotification();
     });
-builder.Services.ConfigureServices();
-builder.Services.AddSmartNotification();
 
 var app = builder.Build();
 
