@@ -16,12 +16,10 @@ public class ShelfConfiguration : IEntityTypeConfiguration<ShelfAggregate>
 
         builder
             .Property(prop => prop.IsActive)
-            .HasDefaultValue(true)
             .IsRequired();
 
         builder
             .Property(prop => prop.IsDeleted)
-            .HasDefaultValue(false)
             .IsRequired();
 
         builder

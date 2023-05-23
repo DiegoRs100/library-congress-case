@@ -16,11 +16,11 @@ public class ShelfItemConfiguration : IEntityTypeConfiguration<ShelfItem>
 
         builder
             .Property(prop => prop.IsDeleted)
-            .HasDefaultValue(false)
             .IsRequired();
 
         builder
             .Property(prop => prop.Price)
+            .HasColumnType(typeof(decimal).Name)
             .IsRequired();
 
         builder

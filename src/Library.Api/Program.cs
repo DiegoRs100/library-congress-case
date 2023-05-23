@@ -1,6 +1,7 @@
 using System.Reflection;
 using Devpack.Notifications;
 using Library.Api.DependencyInjection;
+using Library.Shelf.Infra.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +23,9 @@ builder.Host
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
-        services.ConfigureMediatR();
-        services.ConfigureServices();
+        services.ConfigureShelfDbContext(context.Configuration);
+        //services.ConfigureMediatR();
+        //services.ConfigureServices();
         services.AddSmartNotification();
     });
 

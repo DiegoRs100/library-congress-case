@@ -18,17 +18,5 @@ namespace Library.Api.DependencyInjection
 
                 configuration.RegisterServicesFromAssemblies(assemblies.ToArray());
             });
-
-        public static IServiceCollection ConfigureDbContext(this IServiceCollection services, IConfiguration configuration)
-            => services.AddDbContextPool<DbContext>((provider, builder) =>
-            {
-                builder
-                    .EnableDetailedErrors()
-                    .EnableSensitiveDataLogging()
-                    .UseSqlServer(
-                        connectionString: configuration.GetConnectionString("LibraryCongressDb"),
-                        sqlServerOptionsAction: options 
-                            => options.MigrationsAssembly(Assembly.GetEntryAssembly().GetName().Name));
-            });
     }
 }

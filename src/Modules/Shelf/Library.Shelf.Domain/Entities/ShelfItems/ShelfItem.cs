@@ -5,6 +5,8 @@ namespace Library.Shelf.Domain.Entities.ShelfItems;
 
 public class ShelfItem
 {
+    protected ShelfItem() { }
+
     public ShelfItem(bool isDeleted, Book book, decimal price, int quantity)
     {
         Id = Guid.NewGuid();
@@ -32,7 +34,7 @@ public class ShelfItem
 
 
     #region Reference to navigation
-    public int ShelfId { get; }
+    public Guid ShelfId { get; }
     public Aggregates.Shelf Shelf { get; } = null!;
     #endregion
 }
