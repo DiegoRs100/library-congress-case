@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Library.Shelf.Infra.Migrations
+namespace Library.Shelf.Infra.Databases.Migrations
 {
     [DbContext(typeof(ShelfDbContext))]
     partial class ShelfDbContextModelSnapshot : ModelSnapshot

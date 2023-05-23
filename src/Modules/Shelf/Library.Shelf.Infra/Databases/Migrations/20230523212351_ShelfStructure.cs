@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Library.Shelf.Infra.Migrations
+namespace Library.Shelf.Infra.Databases.Migrations
 {
     /// <inheritdoc />
     public partial class ShelfStructure : Migration

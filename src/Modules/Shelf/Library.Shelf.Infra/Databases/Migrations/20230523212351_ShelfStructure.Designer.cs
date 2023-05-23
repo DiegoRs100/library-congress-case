@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Library.Shelf.Infra.Migrations
+namespace Library.Shelf.Infra.Databases.Migrations
 {
     [DbContext(typeof(ShelfDbContext))]
-    [Migration("20230523210418_ShelfStructure")]
+    [Migration("20230523212351_ShelfStructure")]
     partial class ShelfStructure
     {
         /// <inheritdoc />
