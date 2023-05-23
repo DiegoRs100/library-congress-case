@@ -2,15 +2,15 @@
 
 namespace Library.Api.DependencyInjection.Databases;
 
-public partial class DbContext : DbContext
+public class LibraryDbContext : DbContext
 {
 
-	public Context(DbContextOptions options) 
+	public LibraryDbContext(DbContextOptions options) 
         : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Shelf.Infra.Databases.Contexts.LibraryDbContext).Assembly);
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
