@@ -27,6 +27,12 @@ public class ShelfItemConfiguration : IEntityTypeConfiguration<ShelfItem>
             .Property(prop => prop.Quantity)
             .IsRequired();
 
+        builder
+            .HasOne(shelfItem => shelfItem.Shelf)
+            .WithMany(shelf => shelf.Items)
+            .HasForeignKey(shelfItem => shelfItem.ShelfId)
+            .IsRequired();
+
         builder.OwnsOne(
             prop => prop.Book,
             bookNavigationBuilder =>
