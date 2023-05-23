@@ -28,7 +28,7 @@ public class ShelfItemConfiguration : IEntityTypeConfiguration<ShelfItem>
             .IsRequired();
 
         builder.OwnsOne(
-            shelfItem => shelfItem.Book,
+            prop => prop.Book,
             bookNavigationBuilder =>
             {
                 bookNavigationBuilder.ToTable(nameof(Book));
