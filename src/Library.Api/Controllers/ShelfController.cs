@@ -34,4 +34,9 @@ public class ShelfController : ApplicationController
     [Route("{id:guid}/shelf-item")]
     public Task<IActionResult> AddShelfItemAsync([FromRoute] Command.AddShelfItem command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
+
+    [HttpDelete]
+    [Route("{id:guid}/shelf-item/{id:guid}")]
+    public Task<IActionResult> RemoveShelfItemAsync([FromRoute] Command.RemoveShelfItem command, CancellationToken cancellationToken)
+        => SendCommandAsync(command, cancellationToken);
 }
