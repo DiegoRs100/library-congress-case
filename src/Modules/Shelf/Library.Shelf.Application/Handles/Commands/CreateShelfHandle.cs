@@ -7,10 +7,6 @@ namespace Library.Shelf.Application.Handles.Commands;
 
 public class CreateShelfHandle : ApplicationShelfHandler<Command.CreateShelf>
 {
-
     public CreateShelfHandle(IApplicationService service)
         : base(service, true) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.CreateShelf request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }
