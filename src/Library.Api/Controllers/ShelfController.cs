@@ -24,4 +24,9 @@ public class ShelfController : ApplicationController
     [Route("activate/{id}")]
     public Task<IActionResult> ActivateShelfAsync([FromRoute] Command.ActivateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
+
+    [HttpPatch]
+    [Route("deactivate/{id}")]
+    public Task<IActionResult> DeactivateShelfAsync([FromRoute] Command.DeactivateShelf command, CancellationToken cancellationToken)
+        => SendCommandAsync(command, cancellationToken);
 }
