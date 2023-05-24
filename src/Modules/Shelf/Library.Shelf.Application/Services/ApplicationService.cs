@@ -6,7 +6,7 @@ using ShelfAggregate = Library.Shelf.Domain.Aggregates.Shelf;
 
 namespace Library.Shelf.Application.Services;
 
-public class ApplicationService
+public class ApplicationService : IApplicationService
 {
     private readonly IShelfRepository _repository;
     private readonly IMediator _mediator;
