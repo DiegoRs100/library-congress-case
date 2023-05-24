@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Library.Shelf.Application.Abstactions.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 using ShelfAggregate = Library.Shelf.Domain.Aggregates.Shelf;
 
 namespace Library.Shelf.Infra.Databases;
 
-public class ShelfRepository
+public class ShelfRepository : IShelfRepository
 {
     private readonly DbContext _dbContext;
 
