@@ -14,7 +14,7 @@ public abstract class ApplicationShelfHandler<TCommand> : IInteractorCommand<TCo
     public ApplicationShelfHandler(IApplicationService service, bool isNew = false)
         => (_service, _isNew) = (service, isNew);
 
-    public async Task<IReadOnlyCollection<IDomainEvent>> Handle(TCommand request, CancellationToken cancellationToken)
+    public virtual async Task<IReadOnlyCollection<IDomainEvent>> Handle(TCommand request, CancellationToken cancellationToken)
     {
         ShelfAggregate aggregate;
 
