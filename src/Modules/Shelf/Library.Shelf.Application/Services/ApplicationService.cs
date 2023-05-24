@@ -17,8 +17,8 @@ public class ApplicationService : IApplicationService
         _mediator = mediator;
     }
 
-    public Task<ShelfAggregate?> RecoverAggregateAsync(Guid guid, CancellationToken cancellationToken)
-        => _repository.GetAsync(guid, cancellationToken);
+    public async Task<ShelfAggregate> RecoverAggregateAsync(Guid guid, CancellationToken cancellationToken)
+        => await _repository.GetAsync(guid, cancellationToken) ?? throw new Exception("Shelf not found");
 
     public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync(ShelfAggregate aggregate, bool isNew, CancellationToken cancellationToken)
     {
