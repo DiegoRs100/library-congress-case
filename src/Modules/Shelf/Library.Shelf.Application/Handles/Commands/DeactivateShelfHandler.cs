@@ -5,18 +5,11 @@ using Library.Shelf.Application.Services;
 
 namespace Library.Shelf.Application.Handles.Commands;
 
-public class DeactivateShelfHandler : IInteractorCommand<Command.DeactivateShelf>
+public class DeactivateShelfHandler : ApplicationShelfHandler<Command.DeactivateShelf>
 {
-    private readonly IApplicationService _service;
-
     public DeactivateShelfHandler(IApplicationService service)
-        => _service = service;
+        : base(service) { }
 
-    public async Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.DeactivateShelf request, CancellationToken cancellationToken)
-    {
-        var aggregate = await _service.RecoverAggregateAsync(request.Id, cancellationToken);
-        aggregate.Handle(request);
-
-        return await _service.SaveAggregateAsync(aggregate, false, cancellationToken);
-    }
+    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.DeactivateShelf request, CancellationToken cancellationToken)
+        => base.Handle(request, cancellationToken);
 }
