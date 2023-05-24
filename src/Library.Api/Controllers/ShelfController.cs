@@ -32,7 +32,7 @@ public class ShelfController : ApplicationController
         => SendCommandAsync(new Command.DeactivateShelf(shelfId), cancellationToken);
 
     [HttpPost]
-    [Route("{shelfId:guid}/shelf-item")]
+    [Route("shelf-item")]
     public Task<IActionResult> AddShelfItemAsync([FromBody] Command.AddShelfItem command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 

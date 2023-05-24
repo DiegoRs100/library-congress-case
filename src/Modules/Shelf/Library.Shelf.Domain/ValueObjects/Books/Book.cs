@@ -13,5 +13,5 @@ public record Book (
     string PublishingCompany) 
 {
     public static implicit operator Book(Dto.Book book)
-        => new(book.Name, book.Description, book.Author, book.Language, book.Pages, book.PublicationAt.ToDateTime(TimeOnly.MinValue), book.PublishingCompany);
+        => new(book.Name, book.Description, book.Author, book.Language, book.Pages, book.PublicationAt, book.PublishingCompany);
 }
