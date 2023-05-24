@@ -22,6 +22,9 @@ public class ApplicationService : IApplicationService
 
     public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync(ShelfAggregate aggregate, bool isNew, CancellationToken cancellationToken)
     {
+        if (aggregate.Events.Any() is false)
+            return aggregate.Events;
+
         if(isNew)
             await _repository.InsertAsync(aggregate, cancellationToken);
         else
