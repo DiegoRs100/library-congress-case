@@ -5,23 +5,23 @@ namespace Library.Integration.Services.Shelf;
 
 public static class DomainEvent
 {
-    public record ShelfCreated(string Title, string Description, Dto.Location Location) : Message, IDomainEvent;
+    public record ShelfCreated(Guid ShelfId, string Title, string Description, Dto.Location Location) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfDeleted() : Message, IDomainEvent;
+    public record ShelfDeleted(Guid ShelfId) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfActivated() : Message, IDomainEvent;
+    public record ShelfActivated(Guid ShelfId) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfDeactivated() : Message, IDomainEvent;
+    public record ShelfDeactivated(Guid ShelfId) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfItemAdded(Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message, IDomainEvent;
+    public record ShelfItemAdded(Guid ShelfId, Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfItemIncreased(Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message, IDomainEvent;
+    public record ShelfItemIncreased(Guid ShelfId, Guid ShelfItemId, Dto.Book Book, decimal Price, int Quantity) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfItemRemoved(Guid ShelfItemId) : Message, IDomainEvent;
+    public record ShelfItemRemoved(Guid ShelfId, Guid ShelfItemId) : Message(ShelfId), IDomainEvent;
 
-    public record LocationShelfChanged(Dto.Location Location) : Message, IDomainEvent;
+    public record LocationShelfChanged(Guid ShelfId, Dto.Location Location) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfTitleChanged(string Title) : Message, IDomainEvent;
+    public record ShelfTitleChanged(Guid ShelfId, string Title) : Message(ShelfId), IDomainEvent;
 
-    public record ShelfDescriptionChanged(string Description) : Message, IDomainEvent;
+    public record ShelfDescriptionChanged(Guid ShelfId, string Description) : Message(ShelfId), IDomainEvent;
 }

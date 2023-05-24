@@ -2,5 +2,5 @@
 
 public interface IMessage
 {
-    Guid Id { get; init; }
+    Guid Id { get; }
 }
