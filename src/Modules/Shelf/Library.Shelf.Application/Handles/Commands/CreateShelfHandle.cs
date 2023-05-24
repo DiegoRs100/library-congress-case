@@ -2,25 +2,23 @@
 using Library.Integration.Services.Shelf;
 using Library.Shelf.Application.Abstactions.Handles;
 using Library.Shelf.Application.Abstactions.Repositories;
-
+using Library.Shelf.Application.Services;
 using ShelfAggregate = Library.Shelf.Domain.Aggregates.Shelf;
 
 namespace Library.Shelf.Application.Handles.Commands;
 
 public class CreateShelfHandle : IInteractorCommand<Command.CreateShelf>
 {
-    private readonly IShelfRepository _repository;
+    private readonly IApplicationService _service;
 
-    public CreateShelfHandle(IShelfRepository repository)
-        => _repository = repository;
+    public CreateShelfHandle(IApplicationService service)
+        => _service = service;
 
     public async Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.CreateShelf request, CancellationToken cancellationToken)
     {
         ShelfAggregate aggregate = new();
         aggregate.Handle(request);
 
-        await _repository.InsertAsync(aggregate, cancellationToken);
-
-        return aggregate.Events;
+        return await _service.SaveAggregateAsync(aggregate, true, cancellationToken);
     }
 }

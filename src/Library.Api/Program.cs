@@ -1,6 +1,7 @@
 using System.Reflection;
 using Devpack.Notifications;
 using Library.Api.DependencyInjection;
+using Library.Shelf.Application.DependencyInjections;
 using Library.Shelf.Infra.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,7 @@ builder.Host
 
         services.ConfigureShelfDbContext(context.Configuration);
         services.ConfigureShelfRepositories();
+        services.ConfigureShelfApplication();
 
         services.ConfigureMediatR();
         //services.ConfigureServices();
