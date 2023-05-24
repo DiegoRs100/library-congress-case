@@ -1,4 +1,5 @@
 ﻿using Library.Api.Abstractions;
+using Library.Integration.Abstractions.Messages;
 using Library.Integration.Services.Shelf;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
