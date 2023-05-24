@@ -14,7 +14,7 @@ public class AddShelfItemHandler : IInteractorCommand<Command.AddShelfItem>
 
     public async Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.AddShelfItem request, CancellationToken cancellationToken)
     {
-        var aggregate = await _service.RecoverAggregateAsync(request.ShelfId, cancellationToken);
+        var aggregate = await _service.RecoverAggregateAsync(request.Id, cancellationToken);
         aggregate.Handle(request);
 
         return await _service.SaveAggregateAsync(aggregate, false, cancellationToken);
