@@ -45,4 +45,9 @@ public class ShelfController : ApplicationController
     [Route("{shelfId:guid}/location")]
     public Task<IActionResult> ChangeShelfLocationAsync([FromRoute] Guid shelfId, [FromBody] Dto.Location location, CancellationToken cancellationToken)
         => SendCommandAsync(new Command.ChangeShelfLocation(shelfId, location), cancellationToken);
+
+    [HttpPatch]
+    [Route("{shelfId:guid}/title")]
+    public Task<IActionResult> ChangeShelfTitleAsync([FromRoute] Guid shelfId, [FromQuery] string title, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.ChangeShelfTitle(shelfId, title), cancellationToken);
 }
