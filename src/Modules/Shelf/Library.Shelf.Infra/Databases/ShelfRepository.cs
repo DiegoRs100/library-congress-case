@@ -20,4 +20,14 @@ public class ShelfRepository
 
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public Task<ShelfAggregate?> GetAsync(Guid id, CancellationToken cancellationToken)
+        => _dbContext.Set<ShelfAggregate>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(aggregate => aggregate.Id == id, cancellationToken);
+
+    public IAsyncEnumerable<ShelfAggregate> GetAllAsync()
+        => _dbContext.Set<ShelfAggregate>()
+            .AsNoTracking()
+            .AsAsyncEnumerable();
 }
