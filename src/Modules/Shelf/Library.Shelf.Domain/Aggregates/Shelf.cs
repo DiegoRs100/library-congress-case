@@ -33,21 +33,21 @@ public partial class Shelf
         => Handle(command as dynamic);
 
     private void Handle(Command.CreateShelf command)
-        => ApplyEvent(new DomainEvent.ShelfCreated(command.ShelfId, command.Title, command.Description, command.Location));
+        => ApplyEvent(new DomainEvent.ShelfCreated(command.Id, command.Title, command.Description, command.Location));
 
     private void Handle(Command.DeleteShelf command)
-        => ApplyEvent(new DomainEvent.ShelfDeleted(command.ShelfId));
+        => ApplyEvent(new DomainEvent.ShelfDeleted(command.Id));
 
     private void Handle(Command.ActivateShelf command) 
     {
         if (Items.Any() && IsActive is false)
-            ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
+            ApplyEvent(new DomainEvent.ShelfActivated(command.Id));
     }
 
     private void Handle(Command.DeactivateShelf command) 
     {
         if (IsActive)
-            ApplyEvent(new DomainEvent.ShelfDeactivated(command.ShelfId));
+            ApplyEvent(new DomainEvent.ShelfDeactivated(command.Id));
     }
 
     private void Handle(Command.AddShelfItem command)
@@ -57,21 +57,21 @@ public partial class Shelf
             .SingleOrDefault(item => item.Price.Equals(command.Price));
 
         ApplyEvent(shelfItem is { IsDeleted: false }
-            ? new DomainEvent.ShelfItemIncreased(command.ShelfId, shelfItem.Id, command.Book, command.Price, command.Quantity)
-            : new DomainEvent.ShelfItemAdded(command.ShelfId, Guid.NewGuid(), command.Book, command.Price, command.Quantity));
+            ? new DomainEvent.ShelfItemIncreased(command.Id, shelfItem.Id, command.Book, command.Price, command.Quantity)
+            : new DomainEvent.ShelfItemAdded(command.Id, Guid.NewGuid(), command.Book, command.Price, command.Quantity));
     }
 
     private void Handle(Command.RemoveShelfItem command)
-        => ApplyEvent(new DomainEvent.ShelfItemRemoved(command.ShelfId, command.ShelfItemId));
+        => ApplyEvent(new DomainEvent.ShelfItemRemoved(command.Id, command.ShelfItemId));
 
     private void Handle(Command.ChangeShelfLocation command)
-        => ApplyEvent(new DomainEvent.LocationShelfChanged(command.ShelfId, command.Location));
+        => ApplyEvent(new DomainEvent.LocationShelfChanged(command.Id, command.Location));
 
     private void Handle(Command.ChangeShelfTitle command)
-        => ApplyEvent(new DomainEvent.ShelfTitleChanged(command.ShelfId, command.Title));
+        => ApplyEvent(new DomainEvent.ShelfTitleChanged(command.Id, command.Title));
 
     private void Handle(Command.ChangeShelfDescription command)
-        => ApplyEvent(new DomainEvent.ShelfDescriptionChanged(command.ShelfId, command.Description));
+        => ApplyEvent(new DomainEvent.ShelfDescriptionChanged(command.Id, command.Description));
 
     private void ApplyEvent(IDomainEvent domainEvent)
     {

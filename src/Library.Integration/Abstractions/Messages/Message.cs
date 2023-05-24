@@ -2,4 +2,5 @@
 
 public abstract record Message : IMessage
 {
+    public Guid Id { get; init; }
 }

@@ -1,18 +1,18 @@
 ﻿using Library.Integration.Abstractions.Messages;
 using Library.Integration.Services.Shelf;
-using Library.Shelf.Application.Abstactions.Handles;
 using Library.Shelf.Application.Services;
 
-namespace Library.Shelf.Application.Handles.Commands;
+namespace Library.Shelf.Application.Abstactions.Handles;
 
-public class RemoveShelfItemHandler : IInteractorCommand<Command.RemoveShelfItem>
+public abstract class ApplicationShelfHandler<TCommand> : IInteractorCommand<TCommand>
+    where TCommand : ICommand
 {
     private readonly IApplicationService _service;
 
-    public RemoveShelfItemHandler(IApplicationService service)
+    public ApplicationShelfHandler(IApplicationService service)
         => _service = service;
 
-    public async Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.RemoveShelfItem request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<IDomainEvent>> Handle(TCommand request, CancellationToken cancellationToken)
     {
         var aggregate = await _service.RecoverAggregateAsync(request.ShelfId, cancellationToken);
         aggregate.Handle(request);
