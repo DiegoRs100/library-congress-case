@@ -22,7 +22,7 @@ public class ApplicationController : ControllerBase
             ? Ok(JsonSerializer.Serialize(result as IEnumerable, new JsonSerializerOptions
             {
                 WriteIndented = true,
-            })) 
+            }))
             : BadRequest();
     }
 }
