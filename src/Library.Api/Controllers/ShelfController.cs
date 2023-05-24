@@ -15,4 +15,8 @@ public class ShelfController : ApplicationController
     [HttpPost]
     public Task<IActionResult> CreateShelfAsync([FromBody] Command.CreateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
+
+    [HttpDelete("{id}")]
+    public Task<IActionResult> DeleteShelfAsync([FromRoute] Command.DeleteShelf command, CancellationToken cancellationToken)
+        => SendCommandAsync(command, cancellationToken);
 }
