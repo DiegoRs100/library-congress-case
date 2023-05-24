@@ -1,5 +1,6 @@
 ﻿using Library.Api.Abstractions;
 using Library.Integration.Abstractions.Messages;
+using Library.Integration.DataTransferObjects;
 using Library.Integration.Services.Shelf;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -39,4 +40,9 @@ public class ShelfController : ApplicationController
     [Route("{shelfId:guid}/shelf-item/{shelfItemId:guid}")]
     public Task<IActionResult> RemoveShelfItemAsync([FromRoute] Guid shelfId, [FromRoute] Guid shelfItemId, CancellationToken cancellationToken)
         => SendCommandAsync(new Command.RemoveShelfItem(shelfId, shelfItemId), cancellationToken);
+
+    [HttpPut]
+    [Route("{shelfId:guid}/location")]
+    public Task<IActionResult> ChangeShelfLocationAsync([FromRoute] Guid shelfId, [FromBody] Dto.Location location, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.ChangeShelfLocation(shelfId, location), cancellationToken);
 }
