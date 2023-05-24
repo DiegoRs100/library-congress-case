@@ -16,27 +16,27 @@ public class ShelfController : ApplicationController
     public Task<IActionResult> CreateShelfAsync([FromBody] Command.CreateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
-    [HttpDelete("{id:guid}")]
-    public Task<IActionResult> DeleteShelfAsync([FromRoute] Guid id, CancellationToken cancellationToken)
-        => SendCommandAsync(new Command.DeleteShelf(id), cancellationToken);
+    [HttpDelete("{shelfId:guid}")]
+    public Task<IActionResult> DeleteShelfAsync([FromRoute] Guid shelfId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.DeleteShelf(shelfId), cancellationToken);
 
     [HttpPatch]
-    [Route("{id:guid}/activate")]
-    public Task<IActionResult> ActivateShelfAsync([FromRoute] Guid id, CancellationToken cancellationToken)
-        => SendCommandAsync(new Command.ActivateShelf(id), cancellationToken);
+    [Route("{shelfId:guid}/activate")]
+    public Task<IActionResult> ActivateShelfAsync([FromRoute] Guid shelfId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.ActivateShelf(shelfId), cancellationToken);
 
     [HttpPatch]
-    [Route("{id:guid}/deactivate")]
-    public Task<IActionResult> DeactivateShelfAsync([FromRoute] Command.DeactivateShelf command, CancellationToken cancellationToken)
-        => SendCommandAsync(command, cancellationToken);
+    [Route("{shelfId:guid}/deactivate")]
+    public Task<IActionResult> DeactivateShelfAsync([FromRoute] Guid shelfId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.DeactivateShelf(shelfId), cancellationToken);
 
     [HttpPost]
-    [Route("{id:guid}/shelf-item")]
-    public Task<IActionResult> AddShelfItemAsync([FromRoute] Command.AddShelfItem command, CancellationToken cancellationToken)
+    [Route("{shelfId:guid}/shelf-item")]
+    public Task<IActionResult> AddShelfItemAsync([FromBody] Command.AddShelfItem command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
     [HttpDelete]
-    [Route("{id:guid}/shelf-item/{id:guid}")]
-    public Task<IActionResult> RemoveShelfItemAsync([FromRoute] Command.RemoveShelfItem command, CancellationToken cancellationToken)
-        => SendCommandAsync(command, cancellationToken);
+    [Route("{shelfId:guid}/shelf-item/{shelfItemId:guid}")]
+    public Task<IActionResult> RemoveShelfItemAsync([FromRoute] Guid shelfId, [FromRoute] Guid shelfItemId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.RemoveShelfItem(shelfId, shelfItemId), cancellationToken);
 }
