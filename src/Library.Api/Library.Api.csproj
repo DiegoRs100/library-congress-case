@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
@@ -6,19 +6,24 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Bogus" Version="34.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Bogus" Version="34.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
-    <ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
-    <ProjectReference Include="..\Modules\Rent\Library.Rent.Application\Library.Rent.Application.csproj" />
-    <ProjectReference Include="..\Modules\Rent\Library.Rent.Domain\Library.Rent.Domain.csproj" />
-    <ProjectReference Include="..\Shared\Devpack.Notifications\src\Devpack.Notifications\Devpack.Notifications.csproj" />
-	  <ProjectReference Include="..\Modules\Shelf\Library.Shelf.Application\Library.Shelf.Application.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Library.Integration\Library.Integration.csproj" />
+		<ProjectReference Include="..\Modules\Account\Library.Account.Application\Library.Account.Application.csproj" />
+		<ProjectReference Include="..\Modules\Rent\Library.Rent.Application\Library.Rent.Application.csproj" />
+		<ProjectReference Include="..\Modules\Rent\Library.Rent.Domain\Library.Rent.Domain.csproj" />
+		<ProjectReference Include="..\Modules\Shelf\Library.Shelf.Infra\Library.Shelf.Infra.csproj" />
+		<ProjectReference Include="..\Shared\Devpack.Notifications\src\Devpack.Notifications\Devpack.Notifications.csproj" />
+		<ProjectReference Include="..\Modules\Shelf\Library.Shelf.Application\Library.Shelf.Application.csproj" />
+	</ItemGroup>
 
 </Project>

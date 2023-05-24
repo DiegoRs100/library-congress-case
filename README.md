@@ -48,4 +48,10 @@ __Level:__ Intermediate
 ## Modules
 
 ### Shelf Module
-![SHELF UML](.assets/images/uml-shelf-module.png)
+![SHELF UML](.\.assets\images\uml-shelf-module.png)
+
+Create a migration:
+`Add-Migration ShelfStructure -Project Library.Shelf.Infra -OutputDir Databases\Migrations`
+
+Execute a migration:
+`Update-Database -Project Library.Shelf.Infra`

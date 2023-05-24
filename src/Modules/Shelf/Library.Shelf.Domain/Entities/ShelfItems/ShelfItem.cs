@@ -1,9 +1,12 @@
-﻿using Library.Shelf.Domain.ValueObjects.Books;
+﻿using Library.Shelf.Domain.Aggregates;
+using Library.Shelf.Domain.ValueObjects.Books;
 
 namespace Library.Shelf.Domain.Entities.ShelfItems;
 
 public class ShelfItem
 {
+    protected ShelfItem() { }
+
     public ShelfItem(bool isDeleted, Book book, decimal price, int quantity)
     {
         Id = Guid.NewGuid();
@@ -28,4 +31,10 @@ public class ShelfItem
 
     public void Decrease(int quantity)
         => Quantity -= quantity;
+
+
+    #region Reference to navigation
+    public Guid ShelfId { get; }
+    public Aggregates.Shelf Shelf { get; } = null!;
+    #endregion
 }

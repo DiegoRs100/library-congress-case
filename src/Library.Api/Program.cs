@@ -1,6 +1,8 @@
 using System.Reflection;
 using Devpack.Notifications;
-using Library.Api.Config;
+using Library.Api.DependencyInjection;
+using Library.Shelf.Application.DependencyInjections;
+using Library.Shelf.Infra.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,16 +24,12 @@ builder.Host
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
-        services.AddMediatR(configuration =>
-        {
-            var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll")
-            .Select(assembly
-                => Assembly.Load(AssemblyName.GetAssemblyName(assembly)));
+        services.ConfigureShelfDbContext(context.Configuration);
+        services.ConfigureShelfRepositories();
+        services.ConfigureShelfApplication();
 
-            configuration.RegisterServicesFromAssemblies(assemblies.ToArray());
-        });
-
-        services.ConfigureServices();
+        services.ConfigureMediatR();
+        //services.ConfigureServices();
         services.AddSmartNotification();
     });
 
