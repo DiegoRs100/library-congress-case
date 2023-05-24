@@ -85,6 +85,7 @@ public partial class Shelf
         Title= @event.Title;
         Description= @event.Description;
         Location = @event.Location;
+        IsActive = true;
     }
 
     private void When(DomainEvent.ShelfDeleted _)
@@ -94,7 +95,7 @@ public partial class Shelf
         => IsActive = true;
 
     private void When(DomainEvent.ShelfDeactivated _)
-        => IsDeleted = false;
+        => IsActive = false;
 
     private void When(DomainEvent.ShelfItemAdded @event)
         => _shelfItems.Add(new(false, @event.Book, @event.Price, @event.Quantity));
