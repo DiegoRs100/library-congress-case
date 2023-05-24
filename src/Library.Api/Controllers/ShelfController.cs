@@ -17,8 +17,8 @@ public class ShelfController : ApplicationController
         => SendCommandAsync(command, cancellationToken);
 
     [HttpDelete("{id:guid}")]
-    public Task<IActionResult> DeleteShelfAsync([FromRoute] Command.DeleteShelf command, CancellationToken cancellationToken)
-        => SendCommandAsync(command, cancellationToken);
+    public Task<IActionResult> DeleteShelfAsync([FromRoute] Guid id, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.DeleteShelf(), cancellationToken);
 
     [HttpPatch]
     [Route("{id:guid}/activate")]
