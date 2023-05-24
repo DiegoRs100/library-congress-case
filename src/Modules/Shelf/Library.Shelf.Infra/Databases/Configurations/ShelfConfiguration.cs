@@ -62,7 +62,7 @@ public class ShelfConfiguration : IEntityTypeConfiguration<ShelfAggregate>
                         .IsRequired();
 
                     locationNavigationBuilder
-                        .Property(nameof(Location.Shelf))
+                        .Property(nameof(Location.Rack))
                         .IsRequired();
                 });
     }

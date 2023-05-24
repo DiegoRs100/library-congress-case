@@ -103,14 +103,14 @@ namespace Library.Shelf.Infra.Databases.Migrations
                             b1.Property<int>("Hall")
                                 .HasColumnType("int");
 
+                            b1.Property<int>("Rack")
+                                .HasColumnType("int");
+
                             b1.Property<string>("Session")
                                 .IsRequired()
                                 .HasMaxLength(100)
                                 .IsUnicode(false)
                                 .HasColumnType("varchar(100)");
-
-                            b1.Property<int>("Shelf")
-                                .HasColumnType("int");
 
                             b1.Property<Guid>("ShelfId")
                                 .HasColumnType("uniqueidentifier");

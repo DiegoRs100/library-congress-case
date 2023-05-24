@@ -46,7 +46,7 @@ namespace Library.Shelf.Infra.Databases.Migrations
                     Session = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
                     Hall = table.Column<int>(type: "int", nullable: false),
                     Bookcase = table.Column<int>(type: "int", nullable: false),
-                    Shelf = table.Column<int>(type: "int", nullable: false),
+                    Rack = table.Column<int>(type: "int", nullable: false),
                     ShelfId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

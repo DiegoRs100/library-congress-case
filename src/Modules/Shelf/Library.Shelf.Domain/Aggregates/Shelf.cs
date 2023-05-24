@@ -40,7 +40,7 @@ public partial class Shelf
 
     private void Handle(Command.ActivateShelf command) 
     {
-        if (Items.Any() && IsActive is false)
+        if (IsActive is false)
             ApplyEvent(new DomainEvent.ShelfActivated(command.ShelfId));
     }
 
