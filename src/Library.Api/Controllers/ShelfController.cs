@@ -16,17 +16,17 @@ public class ShelfController : ApplicationController
     public Task<IActionResult> CreateShelfAsync([FromBody] Command.CreateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public Task<IActionResult> DeleteShelfAsync([FromRoute] Command.DeleteShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
     [HttpPatch]
-    [Route("activate/{id}")]
+    [Route("{id:guid}/activate")]
     public Task<IActionResult> ActivateShelfAsync([FromRoute] Command.ActivateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
     [HttpPatch]
-    [Route("deactivate/{id}")]
+    [Route("{id:guid}/deactivate")]
     public Task<IActionResult> DeactivateShelfAsync([FromRoute] Command.DeactivateShelf command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 }
