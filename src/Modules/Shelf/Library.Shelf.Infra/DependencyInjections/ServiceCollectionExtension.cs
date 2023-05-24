@@ -1,4 +1,6 @@
-﻿using Library.Shelf.Infra.Databases.Contexts;
+﻿using Library.Shelf.Application.Abstactions.Repositories;
+using Library.Shelf.Infra.Databases;
+using Library.Shelf.Infra.Databases.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,4 +22,7 @@ public static class ServiceCollectionExtension
                         sqlServerOptionsAction: options
                             => options.MigrationsAssembly(typeof(ShelfDbContext).Assembly.GetName().Name));
             });
+
+    public static IServiceCollection ConfigureShelfRepositories(this IServiceCollection services)
+        => services.AddScoped<IShelfRepository, ShelfRepository>(); 
 }

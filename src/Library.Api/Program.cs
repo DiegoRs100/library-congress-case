@@ -24,7 +24,9 @@ builder.Host
         services.AddSwaggerGen();
 
         services.ConfigureShelfDbContext(context.Configuration);
-        //services.ConfigureMediatR();
+        services.ConfigureShelfRepositories();
+
+        services.ConfigureMediatR();
         //services.ConfigureServices();
         services.AddSmartNotification();
     });
