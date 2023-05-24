@@ -9,7 +9,4 @@ public class DeleteShelfHandle : ApplicationShelfHandler<Command.DeleteShelf>
 {
     public DeleteShelfHandle(IApplicationService service)
         : base(service) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.DeleteShelf request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }

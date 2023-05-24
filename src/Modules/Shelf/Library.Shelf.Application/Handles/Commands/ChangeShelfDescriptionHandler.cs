@@ -9,7 +9,4 @@ public class ChangeShelfDescriptionHandler : ApplicationShelfHandler<Command.Cha
 {
     public ChangeShelfDescriptionHandler(IApplicationService service)
         : base(service) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.ChangeShelfDescription request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }

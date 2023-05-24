@@ -9,7 +9,4 @@ public class ChangeShelfLocationHandler : ApplicationShelfHandler<Command.Change
 {
     public ChangeShelfLocationHandler(IApplicationService service) 
         : base(service) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.ChangeShelfLocation request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }

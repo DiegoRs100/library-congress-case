@@ -9,7 +9,4 @@ public class AddShelfItemHandler : ApplicationShelfHandler<Command.AddShelfItem>
 {
     public AddShelfItemHandler(IApplicationService service)
         : base(service) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.AddShelfItem request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }

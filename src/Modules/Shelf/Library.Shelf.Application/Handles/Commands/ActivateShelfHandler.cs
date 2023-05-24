@@ -9,7 +9,4 @@ public class ActivateShelfHandler : ApplicationShelfHandler<Command.ActivateShel
 {
     public ActivateShelfHandler(IApplicationService service)
         : base(service) { }
-
-    public override Task<IReadOnlyCollection<IDomainEvent>> Handle(Command.ActivateShelf request, CancellationToken cancellationToken)
-        => base.Handle(request, cancellationToken);
 }
