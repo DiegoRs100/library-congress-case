@@ -12,13 +12,15 @@ public class ShelfRepository : IShelfRepository
 	public ShelfRepository(DbContext dbContext)
         => _dbContext = dbContext;
 
-    public async Task UpsertAsync(ShelfAggregate aggregate, CancellationToken cancellationToken)
+    public async Task InsertAsync(ShelfAggregate aggregate, CancellationToken cancellationToken)
     {
-        if (aggregate.Id == default)
-            _dbContext.Set<ShelfAggregate>().Update(aggregate);
-        else
-            await _dbContext.Set<ShelfAggregate>().AddAsync(aggregate, cancellationToken);
+        await _dbContext.Set<ShelfAggregate>().AddAsync(aggregate, cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+    }
 
+    public async Task UpdateAsync(ShelfAggregate aggregate, CancellationToken cancellationToken)
+    {
+        _dbContext.Set<ShelfAggregate>().Update(aggregate);
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
