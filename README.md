@@ -48,7 +48,7 @@ __Level:__ Intermediate
 ## Modules
 
 ### Shelf Module
-![SHELF UML](.\.assets\images\shelfcontext.png)
+![SHELF UML](assets/images/shelfcontext.png)
 
 Create a migration:
 `Add-Migration ShelfStructure -Project Library.Shelf.Infra -OutputDir Databases\Migrations`
