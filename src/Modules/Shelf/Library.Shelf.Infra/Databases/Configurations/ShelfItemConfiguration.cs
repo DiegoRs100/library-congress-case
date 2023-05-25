@@ -14,8 +14,10 @@ public class ShelfItemConfiguration : IEntityTypeConfiguration<ShelfItem>
 
         builder.HasKey(nameof(ShelfItem.Id));
 
+        builder.Ignore(prop => prop.IsModified);
+
         builder
-            .Property(prop => prop.IsDeleted)
+            .Property(prop => prop.IsActive)
             .IsRequired();
 
         builder

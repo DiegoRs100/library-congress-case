@@ -17,18 +17,22 @@ public class ApplicationService : IApplicationService
         _mediator = mediator;
     }
 
-    public Task<ShelfAggregate?> RecoverAggregateAsync(Guid guid, CancellationToken cancellationToken)
-        => _repository.GetAsync(guid, cancellationToken);
+    public async Task<ShelfAggregate> RecoverAggregateAsync(Guid guid, CancellationToken cancellationToken)
+        => await _repository.GetAsync(guid, cancellationToken) ?? new();
 
-    public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync(ShelfAggregate aggregate, bool isNew, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync<TEntity>(TEntity entity, IReadOnlyCollection<IDomainEvent> events, bool isNew, CancellationToken cancellationToken)
+        where TEntity : class
     {
-        if(isNew)
-            await _repository.InsertAsync(aggregate, cancellationToken);
-        else
-            await _repository.UpdateAsync(aggregate, cancellationToken);
+        if (events.Any() is false)
+            return events;
 
-        await Task.WhenAll(aggregate.Events.Select(@event => _mediator.Publish(@event, cancellationToken)));
-        
-        return aggregate.Events;
+        if (isNew)
+            await _repository.InsertAsync(entity, cancellationToken);
+        else
+            await _repository.UpdateAsync(entity, cancellationToken);
+
+        await Task.WhenAll(events.Select(@event => _mediator.Publish(@event, cancellationToken)));
+
+        return events;
     }
 }
