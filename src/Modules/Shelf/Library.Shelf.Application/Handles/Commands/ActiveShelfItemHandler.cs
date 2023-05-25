@@ -5,8 +5,8 @@ using Library.Shelf.Application.Services;
 
 namespace Library.Shelf.Application.Handles.Commands;
 
-public class RemoveShelfItemHandler : ApplicationShelfHandler<Command.RemoveShelfItem>
+public class ActiveShelfItemHandler : ApplicationShelfHandler<Command.ActiveShelfItem>
 {
-    public RemoveShelfItemHandler(IApplicationService service)
+    public ActiveShelfItemHandler(IApplicationService service)
         : base(service) { }
 }

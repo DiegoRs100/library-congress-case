@@ -14,6 +14,9 @@ public class ShelfConfiguration : IEntityTypeConfiguration<ShelfAggregate>
 
         builder.HasKey(nameof(ShelfAggregate.Id));
 
+        builder.Ignore(prop => prop.IsNewRegister);
+        builder.Ignore(prop => prop.EntityModified);
+
         builder
             .Property(prop => prop.IsActive)
             .IsRequired();

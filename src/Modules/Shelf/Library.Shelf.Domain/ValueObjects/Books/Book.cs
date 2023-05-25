@@ -1,4 +1,5 @@
 ﻿using Library.Integration.DataTransferObjects;
+using Library.Shelf.Domain.Entities.ShelfItems;
 using Library.Shelf.Domain.ValueTypes;
 
 namespace Library.Shelf.Domain.ValueObjects.Books;

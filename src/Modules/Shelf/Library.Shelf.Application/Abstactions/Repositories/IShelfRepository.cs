@@ -1,12 +1,15 @@
-﻿using ShelfAggregate = Library.Shelf.Domain.Aggregates.Shelf;
+﻿using Library.Core.Abstractions;
+using ShelfAggregate = Library.Shelf.Domain.Aggregates.Shelf;
 
 namespace Library.Shelf.Application.Abstactions.Repositories;
 
 public interface IShelfRepository
 {
-    Task InsertAsync(ShelfAggregate aggregate, CancellationToken cancellationToken);
+    Task InsertAsync<TEntity>(TEntity entity, CancellationToken cancellationToken)
+        where TEntity : class;
 
-    Task UpdateAsync(ShelfAggregate aggregate, CancellationToken cancellationToken);
+    Task UpdateAsync<TEntity>(TEntity entity, CancellationToken cancellationToken)
+        where TEntity : class;
 
     Task<ShelfAggregate?> GetAsync(Guid id, CancellationToken cancellationToken);
 

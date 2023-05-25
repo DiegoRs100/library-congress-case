@@ -18,20 +18,21 @@ public class ApplicationService : IApplicationService
     }
 
     public async Task<ShelfAggregate> RecoverAggregateAsync(Guid guid, CancellationToken cancellationToken)
-        => await _repository.GetAsync(guid, cancellationToken) ?? throw new Exception("Shelf not found");
+        => await _repository.GetAsync(guid, cancellationToken) ?? new();
 
-    public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync(ShelfAggregate aggregate, bool isNew, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<IDomainEvent>> SaveAggregateAsync<TEntity>(TEntity entity, IReadOnlyCollection<IDomainEvent> events, bool isNew, CancellationToken cancellationToken)
+        where TEntity : class
     {
-        if (aggregate.Events.Any() is false)
-            return aggregate.Events;
+        if (events.Any() is false)
+            return events;
 
-        if(isNew)
-            await _repository.InsertAsync(aggregate, cancellationToken);
+        if (isNew)
+            await _repository.InsertAsync(entity, cancellationToken);
         else
-            await _repository.UpdateAsync(aggregate, cancellationToken);
+            await _repository.UpdateAsync(entity, cancellationToken);
 
-        await Task.WhenAll(aggregate.Events.Select(@event => _mediator.Publish(@event, cancellationToken)));
-        
-        return aggregate.Events;
+        await Task.WhenAll(events.Select(@event => _mediator.Publish(@event, cancellationToken)));
+
+        return events;
     }
 }

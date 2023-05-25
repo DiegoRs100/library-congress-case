@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Shelf.Infra.Databases.Migrations
 {
     [DbContext(typeof(ShelfDbContext))]
-    [Migration("20230524212431_ShelfStructure")]
+    [Migration("20230525151051_ShelfStructure")]
     partial class ShelfStructure
     {
         /// <inheritdoc />
@@ -71,7 +71,7 @@ namespace Library.Shelf.Infra.Databases.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")

@@ -36,10 +36,15 @@ public class ShelfController : ApplicationController
     public Task<IActionResult> AddShelfItemAsync([FromBody] Command.AddShelfItem command, CancellationToken cancellationToken)
         => SendCommandAsync(command, cancellationToken);
 
-    [HttpDelete]
-    [Route("{shelfId:guid}/shelf-item/{shelfItemId:guid}")]
-    public Task<IActionResult> RemoveShelfItemAsync([FromRoute] Guid shelfId, [FromRoute] Guid shelfItemId, CancellationToken cancellationToken)
-        => SendCommandAsync(new Command.RemoveShelfItem(shelfId, shelfItemId), cancellationToken);
+    [HttpPatch]
+    [Route("{shelfId:guid}/shelf-item/{shelfItemId:guid}/activate")]
+    public Task<IActionResult> ActivateShelfItemAsync([FromRoute] Guid shelfId, [FromRoute] Guid shelfItemId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.ActiveShelfItem(shelfId, shelfItemId), cancellationToken);
+
+    [HttpPatch]
+    [Route("{shelfId:guid}/shelf-item/{shelfItemId:guid}/deactivate")]
+    public Task<IActionResult> DeactivateShelfItemAsync([FromRoute] Guid shelfId, [FromRoute] Guid shelfItemId, CancellationToken cancellationToken)
+        => SendCommandAsync(new Command.DeactiveShelfItem(shelfId, shelfItemId), cancellationToken);
 
     [HttpPut]
     [Route("{shelfId:guid}/location")]

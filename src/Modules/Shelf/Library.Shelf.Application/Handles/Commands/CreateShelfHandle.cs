@@ -8,5 +8,5 @@ namespace Library.Shelf.Application.Handles.Commands;
 public class CreateShelfHandle : ApplicationShelfHandler<Command.CreateShelf>
 {
     public CreateShelfHandle(IApplicationService service)
-        : base(service, true) { }
+        : base(service) { }
 }
