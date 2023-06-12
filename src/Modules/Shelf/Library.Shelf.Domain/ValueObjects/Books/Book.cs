@@ -1,4 +1,5 @@
 ﻿using Library.Integration.DataTransferObjects;
+using Library.Shelf.Domain.Entities.ShelfItems;
 using Library.Shelf.Domain.ValueTypes;
 
 namespace Library.Shelf.Domain.ValueObjects.Books;
@@ -13,5 +14,5 @@ public record Book (
     string PublishingCompany) 
 {
     public static implicit operator Book(Dto.Book book)
-        => new(book.Name, book.Description, book.Author, book.Language, book.Pages, book.PublicationAt.ToDateTime(TimeOnly.MinValue), book.PublishingCompany);
+        => new(book.Name, book.Description, book.Author, book.Language, book.Pages, book.PublicationAt, book.PublishingCompany);
 }

@@ -5,8 +5,8 @@ using Library.Shelf.Application.Services;
 
 namespace Library.Shelf.Application.Handles.Commands;
 
-public class CreateShelfHandle : ApplicationShelfHandler<Command.CreateShelf>
+public class DeleteShelfHandle : ApplicationShelfHandler<Command.DeleteShelf>
 {
-    public CreateShelfHandle(IApplicationService service)
+    public DeleteShelfHandle(IApplicationService service)
         : base(service) { }
 }

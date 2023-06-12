@@ -42,3 +42,16 @@ __Level:__ Intermediate
 * Entity Framework
 * Automapper
 * FluentValidation
+
+---
+
+## Modules
+
+### Shelf Module
+![SHELF UML](.assets/images/shelfcontext.png)
+
+Create a migration:
+`Add-Migration ShelfStructure -Project Library.Shelf.Infra -OutputDir Databases\Migrations`
+
+Execute a migration:
+`Update-Database -Project Library.Shelf.Infra`

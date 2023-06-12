@@ -1,6 +1,8 @@
 ﻿using Library.Integration.Abstractions.Messages;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Text.Json;
 
 namespace Library.Api.Abstractions;
 
@@ -15,6 +17,12 @@ public class ApplicationController : ControllerBase
     protected async Task<IActionResult> SendCommandAsync(ICommand command, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(command, cancellationToken);
-        return result.Any() ? Ok(result) : BadRequest();
+
+        return result.Any() 
+            ? Ok(JsonSerializer.Serialize(result as IEnumerable, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            }))
+            : BadRequest();
     }
 }
